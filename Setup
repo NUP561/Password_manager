@@ -1,0 +1,24 @@
+from cx_Freeze import setup, Executable
+
+# Define the target script (your main Python script)
+target = Executable(
+    script=r"C:\Users\nandini01.c\Documents\password.py",
+    base="Win32GUI",  # Use "Win32GUI" to create a GUI application on Windows
+    icon=None  # Replace with the path to your icon file if you have one (optional)
+)
+
+# Configure the setup
+setup(
+    name="Password_manager",  # Name of your application
+    version="1.0",
+    description="Your Password Manager Description",
+    options={"build_exe": {
+        "packages": ["tkinter", "pyperclip", "json"],  # Add the required packages here
+        "include_files": [
+            # Include any additional files or directories here
+            # For example, include your icon file if you have one
+            # ("your_icon.ico", "your_icon.ico")
+        ],
+    }},
+    executables=[target]
+)
